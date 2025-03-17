@@ -39,6 +39,8 @@ Floorball-Statistics project is about displaying information and stats (data) ab
 ![image](https://github.com/user-attachments/assets/6f45b94e-c3e1-4e33-93e2-e602e767f555)
 
 - Page 3
+![image](https://github.com/user-attachments/assets/3318fbdd-60ed-4304-91fd-862f7c7c5dd6)
+
 
 ### Prototype
 > 🚧: A prototype can be designed using placeholder text/figures in Budibase. You don't need to connect the front-end to back-end in the early stages of the project development.
