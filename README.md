@@ -1,5 +1,5 @@
 # Floorball-Statistics
-- Milestons:
+#### MILESTONES:
   1. Analysis: Scenario ideation, use case analysis and user story writing.
   2. Prototype Design: Creation of wireframe and prototype.
   3. Domain Design: Definition of domain model.
@@ -8,7 +8,8 @@
   6. Security and Frontend Implementation: Integration of security framework and frontend realisation.
   7. (optional) Deployment: Deployment of Web application on cloud infrastructure.
 
-SCENARIO:
-
-USER STORIES:
-USE CASES:
+#### SCENARIO:
+Floorball-Statistics project is about displaying information and stats (data) about the three highest floorball leagues in Switzerland. Main goal of our website will be to display all the relevant stats of teams and players, which are needed for teams to prepare for their upcoming games. 
+#### USER STORIES:
+#### USE CASES:
+#### PROTOTYPE DESIGN (INCL. SKETCHES):
