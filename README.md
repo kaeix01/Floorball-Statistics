@@ -36,7 +36,8 @@ Floorball-Statistics project is about displaying information and stats (data) ab
 - Main Page
 ![image](https://github.com/user-attachments/assets/468b5cae-4161-48be-b66e-c15ad0fe0919)
 - Page 2
-  
+![image](https://github.com/user-attachments/assets/6f45b94e-c3e1-4e33-93e2-e602e767f555)
+
 - Page 3
 
 ### Prototype
