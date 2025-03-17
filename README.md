@@ -32,7 +32,12 @@ Floorball-Statistics project is about displaying information and stats (data) ab
 > 🚧: Keep in mind the Corporate Identity (CI); you shall decide appropriately the color schema, graphics, typography, layout, User Experience (UX), and so on.
 
 ### Wireframe
-> 🚧: It is suggested to start with a wireframe. The wireframe focuses on the website structure (Sitemap planning), sketching the pages using Wireframe components (e.g., header, menu, footer) and UX. You can create a wireframe already with draw.io or similar tools. 
+> 🚧: It is suggested to start with a wireframe. The wireframe focuses on the website structure (Sitemap planning), sketching the pages using Wireframe components (e.g., header, menu, footer) and UX. You can create a wireframe already with draw.io or similar tools.
+- Main Page
+![image](https://github.com/user-attachments/assets/468b5cae-4161-48be-b66e-c15ad0fe0919)
+- Page 2
+  
+- Page 3
 
 ### Prototype
 > 🚧: A prototype can be designed using placeholder text/figures in Budibase. You don't need to connect the front-end to back-end in the early stages of the project development.
