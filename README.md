@@ -7,3 +7,8 @@
   5. Data and API Implementation: Implementation of data access and business logic layers, and API.
   6. Security and Frontend Implementation: Integration of security framework and frontend realisation.
   7. (optional) Deployment: Deployment of Web application on cloud infrastructure.
+
+SCENARIO:
+
+USER STORIES:
+USE CASES:
