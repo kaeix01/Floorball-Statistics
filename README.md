@@ -33,13 +33,7 @@ Floorball-Statistics project is about displaying information and stats (data) ab
 
 ### Wireframe
 > 🚧: It is suggested to start with a wireframe. The wireframe focuses on the website structure (Sitemap planning), sketching the pages using Wireframe components (e.g., header, menu, footer) and UX. You can create a wireframe already with draw.io or similar tools.
-- Main Page
-![image](https://github.com/user-attachments/assets/468b5cae-4161-48be-b66e-c15ad0fe0919)
-- Page 2
-![image](https://github.com/user-attachments/assets/6f45b94e-c3e1-4e33-93e2-e602e767f555)
-
-- Page 3
-![image](https://github.com/user-attachments/assets/3318fbdd-60ed-4304-91fd-862f7c7c5dd6)
+![Image](https://github.com/user-attachments/assets/0d3c59ef-a2eb-49e8-aee0-a38451fcf45b)
 
 
 ### Prototype
