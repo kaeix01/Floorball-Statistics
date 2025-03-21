@@ -24,9 +24,25 @@
 Floorball-Statistics project is about displaying information and stats (data) about the three highest floorball leagues in Switzerland. Main goal of our website will be to display all the relevant stats of teams and players, which are needed for teams to prepare for their upcoming games. 
 
 ### User Stories
-
+As a user, I want to view the player stats.
+As a user I want to see the league rankings.
+As a user, I want to see the teams.
+As a user, I want to be able to filter the data.
+As an Admin, I want to edit and manage the various data. 
+As an Admin, I want the website layout to be structured and easy to follow.
 
 ### Use Case
+Use Case 1
+![Image](https://github.com/user-attachments/assets/a169d420-d4be-4760-a5ac-b91dc9375fd2)
+Shows the users available actions for the home page
+
+Use Case 2
+![Image](https://github.com/user-attachments/assets/e88cb0c3-2b23-489f-8bdd-56acb5816fd9)
+Shows the users available actions for the player page
+
+Use Case 3
+![Image](https://github.com/user-attachments/assets/acf1867e-7351-48a6-ba23-bef311cc0252)
+Shows the users available actions for the League page
 
 ## Design
 > 🚧: Keep in mind the Corporate Identity (CI); you shall decide appropriately the color schema, graphics, typography, layout, User Experience (UX), and so on.
