@@ -1,0 +1,711 @@
+openapi: 3.0.4
+info:
+  title: Sports League Management API
+  description: |-
+    This is an API for managing sports leagues, teams, players, and rankings based on the provided ER diagram.
+    It allows for tracking player statistics, team performance, and league standings.
+  termsOfService: https://example.com/terms/
+  contact:
+    email: api@sportsleague.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+externalDocs:
+  description: Find out more about our API
+  url: https://example.com/docs
+servers:
+  - url: https://api.sportsleague.com/v1
+tags:
+  - name: player
+    description: Operations about players
+  - name: team
+    description: Access to team information and statistics
+  - name: league
+    description: League management and information
+  - name: ranking
+    description: League rankings and standings
+paths:
+  /players:
+    get:
+      tags:
+        - player
+      summary: Get all players
+      description: Returns a list of all players in the system
+      operationId: getAllPlayers
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Player'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      tags:
+        - player
+      summary: Add a new player
+      description: Add a new player to the system
+      operationId: addPlayer
+      requestBody:
+        description: Player object to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Player'
+        required: true
+      responses:
+        '201':
+          description: Player created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Player'
+        '400':
+          description: Invalid input
+        '422':
+          description: Validation exception
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /players/{playerId}:
+    get:
+      tags:
+        - player
+      summary: Find player by ID
+      description: Returns a single player
+      operationId: getPlayerById
+      parameters:
+        - name: playerId
+          in: path
+          description: ID of player to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Player'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Player not found
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    put:
+      tags:
+        - player
+      summary: Update player information
+      description: Update an existing player's information
+      operationId: updatePlayer
+      parameters:
+        - name: playerId
+          in: path
+          description: ID of player to update
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Updated player object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Player'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Player'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Player not found
+        '422':
+          description: Validation exception
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    delete:
+      tags:
+        - player
+      summary: Delete a player
+      description: Delete a player from the system
+      operationId: deletePlayer
+      parameters:
+        - name: playerId
+          in: path
+          description: ID of player to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Player deleted successfully
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Player not found
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /teams:
+    get:
+      tags:
+        - team
+      summary: Get all teams
+      description: Returns a list of all teams
+      operationId: getAllTeams
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Team'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      tags:
+        - team
+      summary: Add a new team
+      description: Add a new team to the system
+      operationId: addTeam
+      requestBody:
+        description: Team object to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Team'
+        required: true
+      responses:
+        '201':
+          description: Team created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+        '400':
+          description: Invalid input
+        '422':
+          description: Validation exception
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /teams/{teamId}:
+    get:
+      tags:
+        - team
+      summary: Find team by ID
+      description: Returns a single team
+      operationId: getTeamById
+      parameters:
+        - name: teamId
+          in: path
+          description: ID of team to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Team not found
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /teams/{teamId}/players:
+    get:
+      tags:
+        - team
+      summary: Get players in a team
+      description: Returns all players belonging to a team
+      operationId: getTeamPlayers
+      parameters:
+        - name: teamId
+          in: path
+          description: ID of team to get players from
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Player'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Team not found
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      tags:
+        - team
+      summary: Add player to team
+      description: Adds an existing player to a team
+      operationId: addPlayerToTeam
+      parameters:
+        - name: teamId
+          in: path
+          description: ID of team to add player to
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Player ID to add to team
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                playerId:
+                  type: integer
+                  format: int64
+        required: true
+      responses:
+        '200':
+          description: Player added to team successfully
+        '400':
+          description: Invalid input
+        '404':
+          description: Team or player not found
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /leagues:
+    get:
+      tags:
+        - league
+      summary: Get all leagues
+      description: Returns a list of all leagues
+      operationId: getAllLeagues
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/League'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      tags:
+        - league
+      summary: Create a new league
+      description: Add a new league to the system
+      operationId: addLeague
+      requestBody:
+        description: League object to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/League'
+        required: true
+      responses:
+        '201':
+          description: League created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/League'
+        '400':
+          description: Invalid input
+        '422':
+          description: Validation exception
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /leagues/{leagueId}:
+    get:
+      tags:
+        - league
+      summary: Find league by ID
+      description: Returns a single league
+      operationId: getLeagueById
+      parameters:
+        - name: leagueId
+          in: path
+          description: ID of league to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/League'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: League not found
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /leagues/{leagueId}/teams:
+    get:
+      tags:
+        - league
+      summary: Get teams in a league
+      description: Returns all teams participating in a league
+      operationId: getLeagueTeams
+      parameters:
+        - name: leagueId
+          in: path
+          description: ID of league to get teams from
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Team'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: League not found
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      tags:
+        - league
+      summary: Add team to league
+      description: Adds an existing team to a league
+      operationId: addTeamToLeague
+      parameters:
+        - name: leagueId
+          in: path
+          description: ID of league to add team to
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Team ID to add to league
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                teamId:
+                  type: integer
+                  format: int64
+        required: true
+      responses:
+        '200':
+          description: Team added to league successfully
+        '400':
+          description: Invalid input
+        '404':
+          description: League or team not found
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+  /leagues/{leagueId}/rankings:
+    get:
+      tags:
+        - ranking
+      summary: Get league rankings
+      description: Returns the current rankings for a league
+      operationId: getLeagueRankings
+      parameters:
+        - name: leagueId
+          in: path
+          description: ID of league to get rankings for
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ranking'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: League not found
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+    post:
+      tags:
+        - ranking
+      summary: Update league rankings
+      description: Updates the rankings for a league
+      operationId: updateLeagueRankings
+      parameters:
+        - name: leagueId
+          in: path
+          description: ID of league to update rankings for
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Rankings to update
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Ranking'
+        required: true
+      responses:
+        '200':
+          description: Rankings updated successfully
+        '400':
+          description: Invalid input
+        '404':
+          description: League not found
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+components:
+  schemas:
+    Player:
+      type: object
+      required:
+        - name
+        - lastName
+      properties:
+        playerId:
+          type: integer
+          format: int64
+          example: 10
+        name:
+          type: string
+          example: "John"
+        lastName:
+          type: string
+          example: "Smith"
+        goals:
+          type: integer
+          format: int32
+          example: 15
+        assists:
+          type: integer
+          format: int32
+          example: 10
+        totalPoints:
+          type: integer
+          format: int32
+          example: 25
+      xml:
+        name: player
+    Team:
+      type: object
+      required:
+        - teamName
+      properties:
+        teamId:
+          type: integer
+          format: int64
+          example: 5
+        teamName:
+          type: string
+          example: "Eagles"
+        wins:
+          type: integer
+          format: int32
+          example: 12
+        losses:
+          type: integer
+          format: int32
+          example: 4
+        winsAfterExtraTime:
+          type: integer
+          format: int32
+          example: 2
+        lossesAfterExtraTime:
+          type: integer
+          format: int32
+          example: 1
+        goalsScored:
+          type: integer
+          format: int32
+          example: 45
+        goalsConceded:
+          type: integer
+          format: int32
+          example: 23
+        gamesPlayed:
+          type: integer
+          format: int32
+          example: 19
+        totalPoints:
+          type: integer
+          format: int32
+          example: 38
+        players:
+          type: array
+          items:
+            $ref: '#/components/schemas/Player'
+      xml:
+        name: team
+    League:
+      type: object
+      required:
+        - leagueName
+      properties:
+        leagueId:
+          type: integer
+          format: int64
+          example: 1
+        leagueName:
+          type: string
+          example: "Premier Division"
+        teams:
+          type: array
+          items:
+            $ref: '#/components/schemas/Team'
+      xml:
+        name: league
+    Ranking:
+      type: object
+      required:
+        - position
+        - teamId
+        - leagueId
+      properties:
+        rankingId:
+          type: integer
+          format: int64
+          example: 25
+        position:
+          type: integer
+          format: int32
+          example: 1
+        fkTeamId:
+          type: integer
+          format: int64
+          example: 5
+          description: Foreign key reference to Team
+        fkLeagueId:
+          type: integer
+          format: int64
+          example: 1
+          description: Foreign key reference to League
+      xml:
+        name: ranking
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+      required:
+        - code
+        - message
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: api_key
+      in: header
+    oauth2:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: https://example.com/oauth/authorize
+          scopes:
+            "write:sports": modify sports data
+            "read:sports": read sports data
