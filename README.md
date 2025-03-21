@@ -24,8 +24,8 @@
 Floorball-Statistics project is about displaying information and stats (data) about the three highest floorball leagues in Switzerland. Main goal of our website will be to display all the relevant stats of teams and players, which are needed for teams to prepare for their upcoming games. 
 
 ### User Stories
-As a user, I want to view the player stats.
-As a user I want to see the league rankings.
+> As a user, I want to view the player stats.
+> As a user I want to see the league rankings.
 As a user, I want to see the teams.
 As a user, I want to be able to filter the data.
 As an Admin, I want to edit and manage the various data. 
