@@ -1,0 +1,395 @@
+openapi: 3.0.0
+info:
+  title: Sports League API
+  version: 1.0.0
+paths:
+  /players:
+    get:
+      summary: Get all players
+      tags:
+        - Players
+      responses:
+        '200':
+          description: A list of players
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Player'
+    post:
+      summary: Create a new player
+      tags:
+        - Players
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlayerInput'
+      responses:
+        '201':
+          description: Player created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Player'
+  /players/{playerId}:
+    get:
+      summary: Get a player by ID
+      tags:
+        - Players
+      parameters:
+        - name: playerId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: The player
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Player'
+    put:
+      summary: Update a player by ID
+      tags:
+        - Players
+      parameters:
+        - name: playerId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlayerInput'
+      responses:
+        '200':
+          description: Player updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Player'
+    delete:
+      summary: Delete a player by ID
+      tags:
+        - Players
+      parameters:
+        - name: playerId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Player deleted successfully
+  /players/{playerId}/name:
+    get:
+      summary: Get a player's name
+      tags:
+        - Players
+      parameters:
+        - name: playerId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: The player's name
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+  /players/{playerId}/lastName:
+    get:
+      summary: Get a player's last name
+      tags:
+        - Players
+      parameters:
+        - name: playerId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: The player's last name
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  lastName:
+                    type: string
+  /players/{playerId}/goals:
+    get:
+      summary: Get a player's goals
+      tags:
+        - Players
+      parameters:
+        - name: playerId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: The player's goals
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  goals:
+                    type: integer
+  /players/{playerId}/assists:
+    get:
+      summary: Get a player's assists
+      tags:
+        - Players
+      parameters:
+        - name: playerId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: The player's assists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  assists:
+                    type: integer
+  /players/{playerId}/totalPoints:
+    get:
+      summary: Get a player's total points
+      tags:
+        - Players
+      parameters:
+        - name: playerId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: The player's total points
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalPoints:
+                    type: integer
+  /teams:
+    get:
+      summary: Get all teams
+      tags:
+        - Teams
+      responses:
+        '200':
+          description: A list of teams
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Team'
+    post:
+      summary: Create a new team
+      tags:
+        - Teams
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamInput'
+      responses:
+        '201':
+          description: Team created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+  /teams/{teamName}:
+    get:
+      summary: Get a team by name
+      tags:
+        - Teams
+      parameters:
+        - name: teamName
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The team
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+    put:
+      summary: Update a team by name
+      tags:
+        - Teams
+      parameters:
+        - name: teamName
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamInput'
+      responses:
+        '200':
+          description: Team updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+    delete:
+      summary: Delete a team by name
+      tags:
+        - Teams
+      parameters:
+        - name: teamName
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Team deleted successfully
+  /rankings:
+    get:
+      summary: Get league rankings
+      tags:
+        - Rankings
+      description: Returns the calculated league rankings based on player data.
+      responses:
+        '200':
+          description: Calculated league rankings
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ranking'
+components:
+  schemas:
+    Player:
+      type: object
+      properties:
+        PlayerID:
+          type: integer
+        Name:
+          type: string
+        LastName:
+          type: string
+        TotalPoints:
+          type: integer
+        Assists:
+          type: integer
+        Goals:
+          type: integer
+    PlayerInput:
+      type: object
+      properties:
+        Name:
+          type: string
+        LastName:
+          type: string
+        TotalPoints:
+          type: integer
+        Assists:
+          type: integer
+        Goals:
+          type: integer
+    Team:
+      type: object
+      properties:
+        TeamName:
+          type: string
+        TotalPoints:
+          type: integer
+        PlusMinusStatistics:
+          type: number
+        GamesPlayed:
+          type: integer
+        Wins:
+          type: integer
+        Losses:
+          type: integer
+        GoalsScored:
+          type: integer
+        GoalsConceded:
+          type: integer
+        WinsAfterExtraTime:
+          type: integer
+        LossesAfterExtraTime:
+          type: integer
+    TeamInput:
+      type: object
+      properties:
+        TeamName:
+          type: string
+        TotalPoints:
+          type: integer
+        PlusMinusStatistics:
+          type: number
+        GamesPlayed:
+          type: integer
+        Wins:
+          type: integer
+        Losses:
+          type: integer
+        GoalsScored:
+          type: integer
+        GoalsConceded:
+          type: integer
+        WinsAfterExtraTime:
+          type: integer
+        LossesAfterExtraTime:
+          type: integer
+    Ranking:
+      type: object
+      properties:
+        Ranking:
+          type: integer
+        TeamName:
+          type: string
+        PlayerName:
+          type: string
+        TotalPoints:
+          type: integer
+    RankingInput:
+      type: object
+      properties:
+        Ranking:
+          type: integer
+        TeamName:
+          type: string
+        PlayerName:
+          type: string
+        TotalPoints:
+          type: integer
+        PlusMinusStatistics:
+          type: integer
