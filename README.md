@@ -57,7 +57,7 @@ Shows the users available actions for the League page
 
 ### Domain Design
 > 🚧: Provide a picture and describe your domain model; you may use Entity-Relationship Model or UML class diagram. Both can be created in Visual Paradigm - we have an academic license for it.
-> ![Image](https://github.com/user-attachments/assets/ff15089a-d96c-4114-a8ae-718d116f76d9)
+![Image](https://github.com/user-attachments/assets/a41187d9-cb4a-4fbc-894c-d2e155d6791c)
 
 
 
