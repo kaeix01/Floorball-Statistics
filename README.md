@@ -25,11 +25,12 @@ Floorball-Statistics project is about displaying information and stats (data) ab
 
 ### User Stories
 - As a user, I want to view the player stats.
-- As a user, I want to see the league rankings.
+- As a user I want to see the players ranked by league.
 - As a user, I want to see the teams.
 - As a user, I want to be able to filter the data.
 - As an Admin, I want to edit and manage the various data.
 - As an Admin, I want the website layout to be structured and easy to follow.
+- As an Admin I want the website to be accessible by various devices and ensure compatibility.
 
 ### Use Case
 Use Case 1
