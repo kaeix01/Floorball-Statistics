@@ -1,0 +1,44 @@
+floorball-statistics/
+├── .gitignore
+├── README.md
+├── images/
+│   └── (design diagrams, wireframes, etc.)
+├── floorball/
+│   └── src/
+│       ├── main/
+│       │   ├── java/
+│       │   │   └── ch/fhnw/floorball/
+│       │   │       ├── FloorballApplication.java
+│       │   │       ├── config/
+│       │   │       │   └── SwaggerConfig.java
+│       │   │       ├── controller/
+│       │   │       │   ├── PlayerController.java
+│       │   │       │   ├── TeamController.java
+│       │   │       │   ├── LeagueController.java
+│       │   │       │   └── StatController.java
+│       │   │       ├── domain/
+│       │   │       │   ├── Player.java
+│       │   │       │   ├── Team.java
+│       │   │       │   ├── League.java
+│       │   │       │   └── Stat.java
+│       │   │       ├── repository/
+│       │   │       │   ├── PlayerRepository.java
+│       │   │       │   ├── TeamRepository.java
+│       │   │       │   ├── LeagueRepository.java
+│       │   │       │   └── StatRepository.java
+│       │   │       ├── service/
+│       │   │       │   ├── PlayerService.java
+│       │   │       │   ├── TeamService.java
+│       │   │       │   ├── LeagueService.java
+│       │   │       │   └── StatService.java
+│       │   │       └── dto/
+│       │   │           └── (Data transfer objects if needed)
+│       │   └── resources/
+│       │       ├── application.properties
+│       │       └── data.sql
+│       └── test/
+│           └── (Unit and integration tests)
+├── .vscode/
+│   └── settings.json
+└── .devcontainer/
+    └── devcontainer.json
